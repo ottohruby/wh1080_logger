@@ -1,6 +1,9 @@
 import pywws.weatherstation
 import datetime
 from time import time 
+from uuid import getnode as get_mac
+MAC_ADDRESS = ':'.join(("%012X" % get_mac())[i:i+2] for i in range(0, 12, 2))
+
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 class MyWeatherstation():
@@ -42,6 +45,7 @@ class MyWeatherstation():
             data['server_datetime'] = date_fixed
             data['station_timezone_rf'] = read_timezone
             data['station_datetime_rf'] = read_datetime
+            data['stationame'] = MAC_ADDRESS
             if data.get('delay'):
                 date = date - datetime.timedelta(minutes=data.get('delay'))
                 data['read_datetime'] = date.strftime(DATE_FORMAT)
