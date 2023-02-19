@@ -50,4 +50,14 @@ def addWeather(session, rows):
       session.add(newWeather)
       
    session.commit()
+
+def selectWeatherReplication(session):
+   rows = session.query(Weather).filter_by(replicated=False).order_by(Weather.id.desc()).limit(2).all()
    
+   r = []
+   for row in rows:
+      d = dict(row.__dict__)
+      d.pop('_sa_instance_state', None)
+      r.append(d)
+   
+   return r
