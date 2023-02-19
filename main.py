@@ -21,5 +21,11 @@ if __name__ == "__main__":
     ws = weather.MyWeatherstation()
     rows = ws.measure()
 
-    weather_model.addWeather(session, rows)
-    print("ok")
+    try:
+        weather_model.addWeather(session, rows)
+    except sqlalchemy.exc.SQLAlchemyError as e:
+        print(f"err: {e}")
+    else:
+        # Reset counter in weatherstation if logged to db
+        ws.prepare_set_data_count(0)
+        ws.set_fixed_data()

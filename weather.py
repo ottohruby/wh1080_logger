@@ -63,8 +63,6 @@ class MyWeatherstation():
         if len(measurements):
             if(fixed_block.get('read_period', 0) != 5):
                 self.prepare_set_read_period()
-            self.prepare_set_data_count(0)
-            self.set_fixed_data()
 
         return measurements
 
