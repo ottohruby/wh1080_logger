@@ -10,7 +10,7 @@ class Weather(Base):
    server_datetime = Column(String(length=20), nullable=True)
    server_timestamp = Column(String(length=16), nullable=True)
 
-   stationame = Column(String(length=10), nullable=True) 
+   stationame = Column(String(length=20), nullable=True) 
    station_datetime_rf = Column(String(length=20), nullable=True)
    station_timezone_rf = Column(String(length=10), nullable=True)
    read_period = Column(String(length=10), nullable=True)
