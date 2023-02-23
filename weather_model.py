@@ -52,7 +52,7 @@ def addWeather(session, rows):
    session.commit()
 
 def selectWeatherReplication(session):
-   rows = session.query(Weather).filter_by(replicated=False).order_by(Weather.id.asc()).limit(2).all()
+   rows = session.query(Weather).filter_by(replicated=False).order_by(Weather.id.asc()).limit(20).all()
    
    r = []
    for row in rows:
